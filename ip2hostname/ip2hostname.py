@@ -3,4 +3,7 @@ import socket
 with open("ips.txt") as ips:
     for i in ips:
         i = i.replace("\n", "")
-        print (i + " , " +socket.gethostbyaddr(i)[0])
+        try:
+            print (i + " , " +socket.gethostbyaddr(i)[0])
+        except socket.error:
+            print ("HOSTNAME NOT FOUND")
